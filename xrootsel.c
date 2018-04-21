@@ -29,7 +29,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
-#include <giblib/giblib.h>
 
 /* get geometry of window and use that */
 
@@ -41,7 +40,7 @@ Colormap cm;
 Screen *scr;
 
 void
-init_x_and_imlib(char *dispstr, int screen_num)
+init_x(char *dispstr, int screen_num)
 {
    disp = XOpenDisplay(dispstr);
    if (!disp)
@@ -56,11 +55,6 @@ init_x_and_imlib(char *dispstr, int screen_num)
    cm = DefaultColormap(disp, XScreenNumberOfScreen(scr));
    root = RootWindow(disp, XScreenNumberOfScreen(scr));
 
-   imlib_context_set_display(disp);
-   imlib_context_set_visual(vis);
-   imlib_context_set_colormap(cm);
-   imlib_context_set_color_modifier(NULL);
-   imlib_context_set_operation(IMLIB_OP_COPY);
 }
 
 /* clip rectangle nicely */
@@ -170,7 +164,7 @@ int main() {
   GC gc;
   XGCValues gcval;
   
-  init_x_and_imlib(NULL, 0);
+  init_x(NULL, 0);
 
   xfd = ConnectionNumber(disp);
   fdsize = xfd + 1;

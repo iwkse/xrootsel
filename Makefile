@@ -1,4 +1,4 @@
-LIBS+=`pkg-config --libs x11 imlib2`
+LIBS+=`pkg-config --libs x11`
 CC=gcc
 
 all:
