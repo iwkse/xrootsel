@@ -4,6 +4,6 @@ Small utility which returns coordinates and size of the selection. I'm using thi
 
 Sources are taken from scrot sources, needs some polish and add a makefile as well.
 
-#Compilation
+# Compilation
 
 gcc xrootsel.c $(pkg-config --cflags --libs x11 imlib2) -o xrootsel
